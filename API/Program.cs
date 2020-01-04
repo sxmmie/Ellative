@@ -16,9 +16,10 @@ namespace API
     {
         public static void Main(string[] args)
         {
-            // On App startup, create a DB if not exist and persist/migrate the pending data
+            // On App startup, create a DB if not exist and persist/migrate the pending data (based n migrations)
             var host = CreateHostBuilder(args).Build();
 
+            // We use this to bring in the DbCOntext as a service
             using(var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -26,6 +27,7 @@ namespace API
                 {
                     var context = services.GetRequiredService<DataContext>();   // reference to datacontext service
                     context.Database.Migrate();
+                    Seed.SeedData(context);
                 }
                 catch(Exception ex)
                 {

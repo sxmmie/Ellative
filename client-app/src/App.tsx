@@ -9,6 +9,7 @@ class App extends Component {
     };
 
     // Wait till the component gets mounted and go fetch some data from API
+    // when we set state here, we trigger a re-render of our component and updated state is displayed on webpage
     componentDidMount() {
         axios.get("localhost:5000/api/weathers")
             .then((response) => {

@@ -14,10 +14,11 @@ namespace Persistence
         }
 
         public DbSet<WeatherForecast> WeatherForecasts { get; set; }
+        public DbSet<Activity> Activities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            // Seed data
+            // Seed data - adding data into  a migration class
             builder.Entity<WeatherForecast>()
                 .HasData(
                     new WeatherForecast { Id = 1, Date = DateTime.Today.AddDays(1), Summary = "This is the new weather", TemperatureC = 29 },
