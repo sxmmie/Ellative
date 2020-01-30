@@ -13,7 +13,7 @@ namespace Application.Activities
     {
         public class Command : IRequest
         {
-            public Guid Id { get; set; }    // Guid allows us to create the Id either from the service or client side code
+            public Guid Id { get; set; }    // Guid allows us to create the Id either from the server or client side code
             public string Title { get; set; }
             public string Description { get; set; }
             public string Category { get; set; }
